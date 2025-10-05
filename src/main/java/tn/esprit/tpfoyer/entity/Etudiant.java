@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,4 +22,7 @@ public class Etudiant {
 
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
+
+    @ManyToMany
+    private List<Reservation> reservations;
 }

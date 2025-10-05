@@ -2,23 +2,39 @@ package tn.esprit.tpfoyer.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @Table(name = "T_CHAMBRE")
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(includeFieldNames=false)
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class Chambre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idChambre;
+    @Setter(AccessLevel.NONE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    Long idChambre;
 
     @Column(nullable = true, unique = true, name = "Chambre_NumeroChambre")
-    private Long numeroChambre;
+    public Long numeroChambre;
 
     @Enumerated(EnumType.STRING)
-    private TypeChambre typeC;
+    TypeChambre typeC;
+
+    @ManyToOne
+    private Bloc bloc;
+
+    @ManyToMany(mappedBy = "chambres")
+    private List<Reservation> reservations;
 }

@@ -3,6 +3,8 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -15,4 +17,10 @@ public class Bloc {
 
     private String nomBloc;
     private Long capaciteBloc;
+
+    @ManyToOne
+    private Foyer foyer;
+
+    @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chambre> chambres;
 }

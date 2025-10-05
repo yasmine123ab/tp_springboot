@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +18,10 @@ public class Reservation {
     private Date anneeUniversitaire;
 
     private boolean estValide;
+
+    @ManyToMany
+    private List<Chambre> chambres;
+
+    @ManyToMany(mappedBy = "reservations")
+    private List<Etudiant> etudiants;
 }
