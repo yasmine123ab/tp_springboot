@@ -21,6 +21,6 @@ public class Bloc {
     @ManyToOne
     private Foyer foyer;
 
-    @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "bloc")
     private List<Chambre> chambres;
 }

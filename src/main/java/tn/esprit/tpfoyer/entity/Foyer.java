@@ -19,9 +19,9 @@ public class Foyer {
     private String nomFoyer;
     private Long capaciteFoyer;
 
-    @OneToOne
+    @OneToOne(mappedBy = "foyer")
     private Universite universite;
 
-    @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "foyer")
     private List<Bloc> blocs;
 }

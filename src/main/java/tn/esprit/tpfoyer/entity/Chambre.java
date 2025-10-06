@@ -35,6 +35,6 @@ public class Chambre {
     @ManyToOne
     private Bloc bloc;
 
-    @ManyToMany(mappedBy = "chambres")
+    @ManyToMany
     private List<Reservation> reservations;
 }

@@ -20,8 +20,5 @@ public class Reservation {
     private boolean estValide;
 
     @ManyToMany
-    private List<Chambre> chambres;
-
-    @ManyToMany(mappedBy = "reservations")
     private List<Etudiant> etudiants;
 }
