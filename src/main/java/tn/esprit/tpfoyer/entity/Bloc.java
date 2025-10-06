@@ -2,6 +2,7 @@ package tn.esprit.tpfoyer.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
@@ -10,17 +11,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Bloc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idBloc;
+    Long idBloc;
 
-    private String nomBloc;
-    private Long capaciteBloc;
+    String nomBloc;
+    Long capaciteBloc;
 
     @ManyToOne
-    private Foyer foyer;
+    Foyer foyer;
 
     @OneToMany(mappedBy = "bloc")
-    private List<Chambre> chambres;
+    List<Chambre> chambres;
 }

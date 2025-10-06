@@ -2,6 +2,8 @@ package tn.esprit.tpfoyer.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,15 +12,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Reservation {
     @Id
-    private String idReservation;
+    String idReservation;
 
     @Temporal(TemporalType.DATE)
-    private Date anneeUniversitaire;
+    Date anneeUniversitaire;
 
-    private boolean estValide;
+    boolean estValide;
 
     @ManyToMany
-    private List<Etudiant> etudiants;
+    List<Etudiant> etudiants;
 }
